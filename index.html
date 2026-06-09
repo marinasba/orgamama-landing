@@ -261,26 +261,31 @@
     }
 
     .hero-phone-center {
-      width: 280px;
+      width: 340px;
       z-index: 2;
     }
 
     .hero-phone-side {
-      width: 230px;
+      width: 280px;
       opacity: 0.9;
       transform: scale(0.92);
     }
 
+    @media (max-width: 900px) {
+      .hero-phone-center { width: 260px; }
+      .hero-phone-side { width: 210px; }
+    }
+
     @media (max-width: 768px) {
       .hero-phones { gap: 12px; }
-      .hero-phone-center { width: 200px; }
-      .hero-phone-side { width: 150px; }
+      .hero-phone-center { width: 220px; }
+      .hero-phone-side { width: 170px; }
     }
 
     @media (max-width: 480px) {
       .hero-phones { gap: 8px; }
-      .hero-phone-center { width: 160px; }
-      .hero-phone-side { width: 120px; }
+      .hero-phone-center { width: 170px; }
+      .hero-phone-side { width: 130px; }
       .hero-phone { border-radius: 20px; padding: 6px; }
       .hero-phone img { border-radius: 16px; }
     }
