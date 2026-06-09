@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orgamama — Ton compagnon de grossesse</title>
+  <meta name="description" content="Du premier test au jour J, on organise sereinement ta grossesse avec toi. Dashboard personnalisé, outils pratiques, assistante IA. Gratuit.">
+  <meta name="theme-color" content="#064D3E">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Orgamama — Ton compagnon de grossesse">
+  <meta property="og:description" content="Du premier test au jour J, on organise sereinement ta grossesse avec toi.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://orgamama.app">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --forest: #064D3E;
+      --forest-80: #2B6558;
+      --forest-60: #4A8B7A;
+      --forest-light: #EDF2EE;
+      --rasp: #D1354F;
+      --coral: #D45B6A;
+      --cream: #FDF8F3;
+      --cream-deep: #F5EDE4;
+      --ink: #1B3A33;
+      --body: #3E352F;
+      --muted: #7A8C84;
+      --white: #FFFFFF;
+      --radius-md: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 24px;
+      --radius-hero: 30px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .fraunces {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      color: var(--rasp);
+    }
+
+    /* ========== LAYOUT ========== */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 80px 0; }
+
+    /* ========== NAV ========== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(253, 248, 243, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(6, 77, 62, 0.08);
+      padding: 16px 0;
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--forest);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .nav-logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    .nav-logo-text span {
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 14px;
+      margin-left: 6px;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--forest);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--forest-80);
+      transform: translateY(-1px);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(6, 77, 62, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--forest-light);
+      color: var(--forest);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 700;
+      max-width: 720px;
+      margin: 0 auto 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: clamp(17px, 2.5vw, 20px);
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--forest);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--forest-80);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(6, 77, 62, 0.2);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--forest);
+      padding: 16px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      border: 2px solid rgba(6, 77, 62, 0.15);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--forest);
+      transform: translateY(-2px);
+    }
+
+    .hero-phones {
+      margin-top: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .hero-phone {
+      background: var(--white);
+      border-radius: 36px;
+      padding: 10px;
+      box-shadow: 0 20px 60px rgba(6, 77, 62, 0.12), 0 4px 16px rgba(6, 77, 62, 0.06);
+    }
+
+    .hero-phone img {
+      display: block;
+      width: 100%;
+      border-radius: 28px;
+    }
+
+    .hero-phone-center {
+      width: 280px;
+      z-index: 2;
+    }
+
+    .hero-phone-side {
+      width: 230px;
+      opacity: 0.9;
+      transform: scale(0.92);
+    }
+
+    @media (max-width: 768px) {
+      .hero-phones { gap: 12px; }
+      .hero-phone-center { width: 200px; }
+      .hero-phone-side { width: 150px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-phones { gap: 8px; }
+      .hero-phone-center { width: 160px; }
+      .hero-phone-side { width: 120px; }
+      .hero-phone { border-radius: 20px; padding: 6px; }
+      .hero-phone img { border-radius: 16px; }
+    }
+
+    .hero-screen {
+      background: var(--cream);
+      border-radius: 30px;
+      padding: 32px 24px;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .hero-week-ring {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: conic-gradient(var(--forest) 0% 65%, var(--forest-light) 65% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-week-inner {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-week-num {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .hero-week-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .hero-screen-title { font-size: 16px; font-weight: 600; color: var(--ink); }
+    .hero-screen-subtitle { font-size: 13px; color: var(--muted); text-align: center; }
+
+    .hero-screen-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      width: 100%;
+      border: 1px solid rgba(6, 77, 62, 0.06);
+    }
+
+    .hero-screen-card-title { font-size: 13px; font-weight: 600; color: var(--forest); margin-bottom: 6px; }
+    .hero-screen-card-text { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ========== FEATURES ========== */
+    .features { background: var(--white); }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--forest-60);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 56px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--cream);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(6, 77, 62, 0.08);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .feature-icon.forest { background: rgba(6, 77, 62, 0.1); }
+    .feature-icon.rasp { background: rgba(209, 53, 79, 0.1); }
+    .feature-icon.coral { background: rgba(212, 91, 106, 0.1); }
+
+    .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+    /* ========== TOOLS ========== */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .tool-card {
+      background: var(--white);
+      border: 1px solid rgba(6, 77, 62, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .tool-card:hover { transform: translateY(-2px); border-color: rgba(6, 77, 62, 0.2); }
+    .tool-emoji { font-size: 36px; margin-bottom: 12px; }
+    .tool-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .tool-card p { font-size: 13px; color: var(--muted); }
+
+    .tool-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-top: 10px;
+    }
+
+    .tool-badge.free { background: rgba(6, 77, 62, 0.08); color: var(--forest); }
+    .tool-badge.premium { background: rgba(209, 53, 79, 0.08); color: var(--rasp); }
+
+    /* ========== AI SECTION ========== */
+    .ai-section {
+      background: var(--forest);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(209, 53, 79, 0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .ai-section .section-label { color: rgba(255, 255, 255, 0.5); }
+    .ai-section .section-title { color: var(--white); }
+    .ai-section .section-subtitle { color: rgba(255, 255, 255, 0.7); }
+
+    .ai-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .ai-chat-preview {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-hero);
+      padding: 28px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ai-msg { display: flex; gap: 12px; margin-bottom: 16px; }
+    .ai-msg:last-child { margin-bottom: 0; }
+
+    .ai-msg-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .ai-msg-avatar.user { background: rgba(255, 255, 255, 0.15); }
+    .ai-msg-avatar.maia { background: var(--rasp); }
+
+    .ai-msg-bubble {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 12px 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .ai-features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ai-features-list li { display: flex; gap: 16px; align-items: flex-start; }
+
+    .ai-check {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .ai-features-list li div h4 { color: var(--white); font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .ai-features-list li div p { color: rgba(255, 255, 255, 0.6); font-size: 14px; }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      border: 1px solid rgba(6, 77, 62, 0.06);
+    }
+
+    .testimonial-stars { color: #F5A623; font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
+
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--body);
+      margin-bottom: 16px;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--forest-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .testimonial-name { font-weight: 600; font-size: 14px; color: var(--ink); }
+    .testimonial-info { font-size: 12px; color: var(--muted); }
+
+    /* ========== PRIVACY ========== */
+    .privacy-section { background: var(--forest-light); }
+
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .privacy-card { text-align: center; padding: 24px; }
+    .privacy-icon { font-size: 36px; margin-bottom: 16px; }
+    .privacy-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .privacy-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ========== CTA ========== */
+    .cta-section { text-align: center; padding: 100px 0; }
+    .cta-section h2 { font-size: clamp(28px, 4vw, 44px); margin-bottom: 16px; }
+    .cta-section p { font-size: 18px; color: var(--muted); margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    .store-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--ink);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
+    .store-btn-icon { font-size: 28px; }
+    .store-btn-text { text-align: left; }
+    .store-btn-label { font-size: 11px; opacity: 0.7; }
+    .store-btn-name { font-size: 17px; font-weight: 600; }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--forest);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 48px 0 32px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .footer-brand { max-width: 280px; }
+    .footer-logo { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .footer-brand p { font-size: 14px; line-height: 1.6; }
+
+    .footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
+    .footer-col h4 { color: var(--white); font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .footer-bottom a { color: rgba(255, 255, 255, 0.5); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--white); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      section { padding: 56px 0; }
+      .hero { padding: 120px 0 56px; }
+      .ai-grid { grid-template-columns: 1fr; gap: 32px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-content { flex-direction: column; }
+      .footer-links { gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .tools-grid { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .store-buttons { flex-direction: column; align-items: center; }
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @media (prefers-reduced-motion: no-preference) {
+      .feature-card, .tool-card, .testimonial-card, .privacy-card {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.6s ease forwards;
+      }
+
+      @keyframes fadeUp {
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .features-grid > :nth-child(1) { animation-delay: 0s; }
+      .features-grid > :nth-child(2) { animation-delay: 0.1s; }
+      .features-grid > :nth-child(3) { animation-delay: 0.2s; }
+      .features-grid > :nth-child(4) { animation-delay: 0.3s; }
+      .features-grid > :nth-child(5) { animation-delay: 0.4s; }
+      .features-grid > :nth-child(6) { animation-delay: 0.5s; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <img src="images/logo-orgamama.jpeg" alt="Orgamama" style="width:36px;height:36px;border-radius:10px;object-fit:cover;">
+        <div class="nav-logo-text">Orgamama <span>by Gariguettes</span></div>
+      </a>
+      <a href="#telecharger" class="nav-cta">T&eacute;l&eacute;charger</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Organise ta grossesse, <span class="fraunces">sereinement</span></h1>
+      <p>Du premier test au jour J, ton tableau de bord personnalis&eacute; pour vivre chaque &eacute;tape en toute tranquillit&eacute;.</p>
+      <div class="hero-buttons">
+        <a href="#telecharger" class="btn-primary">T&eacute;l&eacute;charger gratuitement</a>
+        <a href="#fonctionnalites" class="btn-secondary">D&eacute;couvrir</a>
+      </div>
+
+      <div class="hero-phones">
+        <div class="hero-phone hero-phone-side">
+          <img src="images/parcours.png" alt="Parcours semaine par semaine">
+        </div>
+        <div class="hero-phone hero-phone-center">
+          <img src="images/dashboard.png" alt="Dashboard Orgamama — Semaine 20">
+        </div>
+        <div class="hero-phone hero-phone-side">
+          <img src="images/outils.png" alt="Outils pratiques">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="fonctionnalites">
+    <div class="container">
+      <div class="section-label">Fonctionnalit&eacute;s</div>
+      <h2 class="section-title">Tout ce qu'il te faut, <span class="fraunces">rien de plus</span></h2>
+      <p class="section-subtitle">Pas de bruit, pas de stress. Juste les bons outils au bon moment pour profiter de ta grossesse.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon forest">📊</div>
+          <h3>Tableau de bord</h3>
+          <p>Ta semaine en un coup d'œil : o&ugrave; en est b&eacute;b&eacute;, tes prochains rendez-vous, tes t&acirc;ches du moment.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon rasp">💬</div>
+          <h3>Check-in quotidien</h3>
+          <p>20 secondes pour noter ton humeur et tes sympt&ocirc;mes. Des suggestions naturelles adapt&eacute;es &agrave; ta semaine.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon forest">📋</div>
+          <h3>D&eacute;marches administratives</h3>
+          <p>CAF, S&eacute;cu, employeur : chaque t&acirc;che arrive au bon moment avec les documents n&eacute;cessaires.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon coral">📅</div>
+          <h3>Rendez-vous m&eacute;dicaux</h3>
+          <p>&Eacute;chographies, consultations pr&eacute;natales, cours de pr&eacute;paration &agrave; la naissance : on dit quels rendez-vous prendre et quand.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon rasp">🗺️</div>
+          <h3>Parcours semaine par semaine</h3>
+          <p>Une frise visuelle de toute ta grossesse. Tu sais toujours o&ugrave; tu en es et ce qui arrive.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon forest">🔒</div>
+          <h3>Tes donn&eacute;es restent chez toi</h3>
+          <p>Pas de compte obligatoire. Tes donn&eacute;es sont stock&eacute;es sur ton t&eacute;l&eacute;phone, point.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="outils">
+    <div class="container">
+      <div class="section-label">Outils pratiques</div>
+      <h2 class="section-title">Pr&eacute;pare chaque d&eacute;tail <span class="fraunces">sans charge mentale</span></h2>
+      <p class="section-subtitle">Des listes et guides concrets pour ne rien oublier, de la valise maternit&eacute; au projet de naissance.</p>
+
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-emoji">📁</div>
+          <h4>Dossier maternit&eacute;</h4>
+          <p>Tous tes documents organis&eacute;s pour le jour J</p>
+
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-emoji">📝</div>
+          <h4>Projet de naissance</h4>
+          <p>Construis tes pr&eacute;f&eacute;rences d'accouchement &eacute;tape par &eacute;tape</p>
+
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-emoji">👜</div>
+          <h4>Valise maman</h4>
+          <p>Liste compl&egrave;te avec guides d'achat pour chaque article</p>
+
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-emoji">🧸</div>
+          <h4>Valise b&eacute;b&eacute;</h4>
+          <p>Tout ce qu'il faut pour accueillir b&eacute;b&eacute; &agrave; la maternit&eacute;</p>
+
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-emoji">🛏️</div>
+          <h4>Chambre b&eacute;b&eacute;</h4>
+          <p>Pr&eacute;pare l'espace de b&eacute;b&eacute; avec nos guides d'&eacute;quipement</p>
+
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-emoji">🔍</div>
+          <h4>Je peux ?</h4>
+          <p>Parac&eacute;tamol, sushi, bain chaud... Recherche instantan&eacute;e</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI SECTION -->
+  <section class="ai-section">
+    <div class="container">
+      <div class="ai-grid">
+        <div>
+          <div class="section-label">Assistante IA</div>
+          <h2 class="section-title">Pose tes questions &agrave; <span class="fraunces">Ma&iuml;a</span></h2>
+          <p class="section-subtitle">Une assistante qui r&eacute;pond &agrave; tes questions de grossesse avec des sources fiables. Pas de diagnostic, pas d'invention.</p>
+
+          <ul class="ai-features-list">
+            <li>
+              <div class="ai-check">✓</div>
+              <div>
+                <h4>R&eacute;ponses sourc&eacute;es</h4>
+                <p>Chaque r&eacute;ponse cite ses sources m&eacute;dicales et officielles</p>
+              </div>
+            </li>
+            <li>
+              <div class="ai-check">✓</div>
+              <div>
+                <h4>Adapt&eacute;e &agrave; ta semaine</h4>
+                <p>Ma&iuml;a conna&icirc;t ta semaine de grossesse et ta situation</p>
+              </div>
+            </li>
+            <li>
+              <div class="ai-check">✓</div>
+              <div>
+                <h4>Respect de ta vie priv&eacute;e</h4>
+                <p>Z&eacute;ro stockage de tes conversations. Transmission &eacute;ph&eacute;m&egrave;re uniquement</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="ai-chat-preview">
+          <div class="ai-msg">
+            <div class="ai-msg-avatar user">👩</div>
+            <div class="ai-msg-bubble">Est-ce que je peux boire du th&eacute; vert enceinte ?</div>
+          </div>
+          <div class="ai-msg">
+            <div class="ai-msg-avatar maia">🌿</div>
+            <div class="ai-msg-bubble">Le th&eacute; vert contient de la caf&eacute;ine. En quantit&eacute; mod&eacute;r&eacute;e (1 &agrave; 2 tasses par jour), c'est g&eacute;n&eacute;ralement consid&eacute;r&eacute; comme sans risque. Privil&eacute;gie les infusions sans th&eacute;ine comme les tisanes de grossesse Gariguettes. 🍵</div>
+          </div>
+          <div class="ai-msg">
+            <div class="ai-msg-avatar user">👩</div>
+            <div class="ai-msg-bubble">Et les tisanes de framboisier ?</div>
+          </div>
+          <div class="ai-msg">
+            <div class="ai-msg-avatar maia">🌿</div>
+            <div class="ai-msg-bubble">La feuille de framboisier est traditionnellement recommand&eacute;e &agrave; partir du 3e trimestre. Demande l'avis de ta sage-femme pour le dosage adapt&eacute; &agrave; ta situation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="temoignages">
+    <div class="container">
+      <div class="section-label">T&eacute;moignages</div>
+      <h2 class="section-title">Elles utilisent <span class="fraunces">Orgamama</span></h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">&laquo; Orgamama m'a enlev&eacute; la peur d'oublier une t&acirc;che. Tout arrive au bon moment, je profite enfin de ma grossesse. &raquo;</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🌸</div>
+            <div>
+              <div class="testimonial-name">Camille</div>
+              <div class="testimonial-info">6 mois de grossesse, Paris</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">&laquo; J'ai tout de suite compris o&ugrave; j'en &eacute;tais. Les rappels ne sont jamais stressants. &Ccedil;a change tout quand on travaille. &raquo;</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🌷</div>
+            <div>
+              <div class="testimonial-name">Noor</div>
+              <div class="testimonial-info">4 mois de grossesse, Lyon</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">&laquo; CAF, S&eacute;cu, employeur : je ne savais pas par o&ugrave; commencer. Orgamama a tout organis&eacute; pour moi. &raquo;</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🌺</div>
+            <div>
+              <div class="testimonial-name">L&eacute;a</div>
+              <div class="testimonial-info">Maman depuis 2 mois, Bordeaux</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">&laquo; L'appli que j'aurais voulu pour ma premi&egrave;re grossesse. Cette fois, je n'ai pas le stress d'oublier quelque chose. &raquo;</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🌻</div>
+            <div>
+              <div class="testimonial-name">In&egrave;s</div>
+              <div class="testimonial-info">2e grossesse, Marseille</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy-section">
+    <div class="container">
+      <div class="section-label" style="text-align: center;">Confiance</div>
+      <h2 class="section-title" style="text-align: center;">Con&ccedil;ue pour <span class="fraunces">te respecter</span></h2>
+
+      <div class="privacy-grid">
+        <div class="privacy-card">
+          <div class="privacy-icon">🔐</div>
+          <h4>Donn&eacute;es locales</h4>
+          <p>Tes informations restent sur ton t&eacute;l&eacute;phone. Pas de serveur, pas de tracking.</p>
+        </div>
+
+        <div class="privacy-card">
+          <div class="privacy-icon">🙅‍♀️</div>
+          <h4>Pas de compte obligatoire</h4>
+          <p>Tu t&eacute;l&eacute;charges, tu renseignes ta date, c'est parti. Aucune inscription requise.</p>
+        </div>
+
+        <div class="privacy-card">
+          <div class="privacy-icon">🌿</div>
+          <h4>By Gariguettes</h4>
+          <p>Cr&eacute;&eacute;e par la marque de tisanes de grossesse suivie par 40 000+ futures mamans.</p>
+        </div>
+
+        <div class="privacy-card">
+          <div class="privacy-icon">💚</div>
+          <h4>Bienveillante</h4>
+          <p>Z&eacute;ro culpabilit&eacute;, z&eacute;ro comparaison sociale. Ton rythme, tes choix, ta grossesse.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="telecharger">
+    <div class="container">
+      <h2>Pr&ecirc;te &agrave; organiser ta grossesse <span class="fraunces">sereinement</span> ?</h2>
+      <p>Gratuit. Sans compte. Disponible maintenant.</p>
+
+      <div class="store-buttons">
+        <a href="#" class="store-btn">
+          <div class="store-btn-icon">🍎</div>
+          <div class="store-btn-text">
+            <div class="store-btn-label">T&eacute;l&eacute;charger sur</div>
+            <div class="store-btn-name">App Store</div>
+          </div>
+        </a>
+
+        <a href="#" class="store-btn">
+          <div class="store-btn-icon">▶️</div>
+          <div class="store-btn-text">
+            <div class="store-btn-label">Disponible sur</div>
+            <div class="store-btn-name">Google Play</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">Orgamama 🌿</div>
+          <p>Du premier test au jour J, on organise sereinement ta grossesse avec toi.</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Application</h4>
+            <ul>
+              <li><a href="#fonctionnalites">Fonctionnalit&eacute;s</a></li>
+              <li><a href="#outils">Outils</a></li>
+              <li><a href="#temoignages">T&eacute;moignages</a></li>
+              <li><a href="#telecharger">T&eacute;l&eacute;charger</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Gariguettes</h4>
+            <ul>
+              <li><a href="https://gariguettes.fr" target="_blank">Boutique</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">TikTok</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>L&eacute;gal</h4>
+            <ul>
+              <li><a href="#">Mentions l&eacute;gales</a></li>
+              <li><a href="#">Politique de confidentialit&eacute;</a></li>
+              <li><a href="#">CGU</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Orgamama par Gariguettes. Tous droits r&eacute;serv&eacute;s.</span>
+        <span>Fait avec 💚 pour les futures mamans</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
