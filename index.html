@@ -612,6 +612,8 @@
     }
 
     .store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
+    .store-btn-disabled { background: #999; cursor: default; opacity: 0.6; }
+    .store-btn-disabled:hover { transform: none; box-shadow: none; }
     .store-btn-icon { font-size: 28px; }
     .store-btn-text { text-align: left; }
     .store-btn-label { font-size: 11px; opacity: 0.7; }
@@ -989,13 +991,13 @@
             <div class="store-btn-name">l'App Store</div>
           </div>
         </a>
-        <a href="#" class="store-btn">
+        <span class="store-btn store-btn-disabled">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.67C2.66 23.41 2.31 22.88 2.31 22.24V1.77C2.31 1.12 2.66 0.59 3.18 0.34L13.04 11.99L3.18 23.67ZM16.81 15.78L5.15 22.5L14.27 12.72L16.81 15.78ZM20.16 10.46C20.68 10.82 21 11.38 21 12C21 12.63 20.68 13.19 20.16 13.55L17.89 14.85L15.04 12L17.89 9.15L20.16 10.46ZM5.15 1.5L16.81 8.22L14.27 11.28L5.15 1.5Z"/></svg>
           <div class="store-btn-text">
-            <div class="store-btn-label">Disponible sur</div>
+            <div class="store-btn-label">Bient&ocirc;t disponible sur</div>
             <div class="store-btn-name">Google Play</div>
           </div>
-        </a>
+        </span>
       </div>
     </div>
   </section>
